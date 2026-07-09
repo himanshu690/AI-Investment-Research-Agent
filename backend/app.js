@@ -1,9 +1,14 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import connectDB from './src/config/db.js';
+import SearchHistory from './src/models/SearchHistory.js';
 
 // Load environmental keys
 dotenv.config();
+
+// Connect to MongoDB
+connectDB();
 
 const app = express();
 
@@ -67,6 +72,13 @@ app.get('/api/research', async (req, res) => {
     if (finalState.error) {
       sendEvent("ERROR", { message: finalState.error });
     } else {
+      // Save to database
+      try {
+        await SearchHistory.create({ companyName, finalState });
+      } catch (dbError) {
+        console.error("Failed to save search history:", dbError);
+      }
+
       // Send final payload
       sendEvent("DONE", { state: finalState });
     }
@@ -76,6 +88,27 @@ app.get('/api/research', async (req, res) => {
     console.error("Agent execution error:", error);
     sendEvent("ERROR", { message: error.message });
     res.end();
+  }
+});
+
+// Fetch search history (summary)
+app.get('/api/history', async (req, res) => {
+  try {
+    const history = await SearchHistory.find().sort({ timestamp: -1 }).select('companyName timestamp');
+    res.json(history);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch history" });
+  }
+});
+
+// Fetch a specific historic search result
+app.get('/api/history/:id', async (req, res) => {
+  try {
+    const record = await SearchHistory.findById(req.params.id);
+    if (!record) return res.status(404).json({ error: "Record not found" });
+    res.json(record);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch record" });
   }
 });
 

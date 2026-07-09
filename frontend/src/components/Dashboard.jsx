@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Search, Loader2 } from 'lucide-react';
+import { Search, Loader2, History, Plus } from 'lucide-react';
 import Timeline from './Timeline';
 import ReportViewer from './ReportViewer';
+import SearchHistory from './SearchHistory';
 
 export default function Dashboard() {
   const [companyName, setCompanyName] = useState('');
@@ -9,6 +10,27 @@ export default function Dashboard() {
   const [currentStep, setCurrentStep] = useState(null);
   const [reportData, setReportData] = useState(null);
   const [error, setError] = useState(null);
+  const [viewMode, setViewMode] = useState('new');
+
+  const loadHistoricReport = async (id) => {
+    try {
+      setIsProcessing(true);
+      setReportData(null);
+      setError(null);
+      setViewMode('new');
+      
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const response = await fetch(`${API_URL}/api/history/${id}`);
+      if (!response.ok) throw new Error("Failed to load past report.");
+      
+      const data = await response.json();
+      setReportData(data.finalState);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
 
   const startResearch = (e) => {
     e.preventDefault();
@@ -49,39 +71,75 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-wrapper">
-      <div className="glass-panel" style={{ marginBottom: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <h2 style={{ marginBottom: '1.5rem', textAlign: 'center' }}>Target Company Analysis</h2>
+      <div className="glass-panel animate-fade-in stagger-1" style={{ marginBottom: '3rem', padding: '3rem 2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', overflow: 'hidden' }}>
+        {/* Decorative background glow */}
+        <div style={{ position: 'absolute', top: '-50%', left: '50%', transform: 'translateX(-50%)', width: '100%', height: '100%', background: 'var(--accent-gradient-subtle)', filter: 'blur(60px)', zIndex: 0, opacity: 0.5, borderRadius: '50%' }} />
         
-        <form onSubmit={startResearch} style={{ display: 'flex', gap: '1rem', width: '100%', maxWidth: '600px' }}>
-          <div style={{ position: 'relative', flexGrow: 1 }}>
-            <Search style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-secondary)' }} size={20} />
+        <h2 style={{ marginBottom: '2rem', textAlign: 'center', fontSize: '2rem', zIndex: 1 }}>
+          Target Company <span className="text-gradient">Analysis</span>
+        </h2>
+        
+        <form onSubmit={startResearch} style={{ display: 'flex', gap: '1rem', width: '100%', maxWidth: '650px', zIndex: 1 }}>
+          <div style={{ position: 'relative', flexGrow: 1, display: 'flex', alignItems: 'center' }}>
+            <Search style={{ position: 'absolute', left: '20px', color: 'var(--text-secondary)' }} size={24} />
             <input 
               type="text" 
-              placeholder="Enter company name (e.g. Apple, Nvidia, Tesla)" 
+              placeholder="Enter company name (e.g., Apple, Nvidia, Tesla)" 
               value={companyName}
               onChange={(e) => setCompanyName(e.target.value)}
               disabled={isProcessing}
               style={{
                 width: '100%',
-                padding: '16px 24px 16px 48px',
-                borderRadius: '8px',
-                background: 'rgba(0, 0, 0, 0.3)',
-                border: '1px solid var(--border-color)',
-                color: 'white',
-                fontSize: '1rem',
+                padding: '20px 24px 20px 56px',
+                borderRadius: '16px',
+                background: 'rgba(255, 255, 255, 0.6)',
+                border: '1px solid rgba(0, 0, 0, 0.05)',
+                color: 'var(--text-primary)',
+                fontSize: '1.1rem',
                 outline: 'none',
                 fontFamily: 'Inter',
-                transition: 'border-color 0.3s ease'
+                transition: 'all 0.3s ease',
+                boxShadow: 'inset 0 2px 5px rgba(0,0,0,0.02)'
               }}
-              onFocus={(e) => e.target.style.borderColor = 'var(--accent-primary)'}
-              onBlur={(e) => e.target.style.borderColor = 'var(--border-color)'}
+              onFocus={(e) => {
+                e.target.style.borderColor = 'var(--accent-primary)';
+                e.target.style.boxShadow = 'inset 0 2px 5px rgba(0,0,0,0.02), 0 0 20px rgba(255, 20, 147, 0.2)';
+              }}
+              onBlur={(e) => {
+                e.target.style.borderColor = 'rgba(0, 0, 0, 0.05)';
+                e.target.style.boxShadow = 'inset 0 2px 5px rgba(0,0,0,0.02)';
+              }}
             />
           </div>
-          <button type="submit" className="btn-primary" disabled={isProcessing || !companyName.trim()}>
-            {isProcessing ? <Loader2 className="animate-spin" size={20} /> : <Search size={20} />}
-            {isProcessing ? 'Researching...' : 'Analyze'}
+          <button type="submit" className="btn-primary" disabled={isProcessing || !companyName.trim()} style={{ borderRadius: '16px', padding: '0 32px' }}>
+            {isProcessing ? <Loader2 className="animate-spin" size={24} /> : <Search size={24} />}
+            <span style={{ fontSize: '1.1rem' }}>{isProcessing ? 'Analyzing' : 'Analyze'}</span>
           </button>
         </form>
+      </div>
+
+      <div className="animate-fade-in stagger-2" style={{ display: 'flex', justifyContent: 'center', marginBottom: '3rem' }}>
+        <div className="segmented-control">
+          <div className="segment-active-bg" style={{ 
+            width: '50%', 
+            left: viewMode === 'new' ? '6px' : 'calc(50% - 6px)',
+            transform: viewMode === 'new' ? 'translateX(0)' : 'translateX(12px)'
+          }} />
+          <button 
+            className={`segment-btn ${viewMode === 'new' ? 'active' : ''}`}
+            onClick={() => setViewMode('new')}
+            style={{ width: '150px', justifyContent: 'center' }}
+          >
+            <Plus size={18} /> New Search
+          </button>
+          <button 
+            className={`segment-btn ${viewMode === 'history' ? 'active' : ''}`}
+            onClick={() => setViewMode('history')}
+            style={{ width: '150px', justifyContent: 'center' }}
+          >
+            <History size={18} /> History
+          </button>
+        </div>
       </div>
 
       {error && (
@@ -93,7 +151,11 @@ export default function Dashboard() {
 
       {isProcessing && <Timeline currentStep={currentStep} />}
       
-      {reportData && !isProcessing && <ReportViewer data={reportData} />}
+      {viewMode === 'history' && !isProcessing && (
+        <SearchHistory onSelectHistory={loadHistoricReport} />
+      )}
+
+      {reportData && !isProcessing && viewMode === 'new' && <ReportViewer data={reportData} />}
     </div>
   );
 }

@@ -1,19 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --bg-primary: #0a0a0f;
-  --bg-secondary: rgba(25, 25, 35, 0.7);
-  --text-primary: #ffffff;
-  --text-secondary: #a0a0b0;
-  --accent-primary: #6366f1;
-  --accent-secondary: #8b5cf6;
-  --accent-gradient: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  /* Light colorful theme inspired by portfolio */
+  --bg-primary: #f0f4f8; /* Light blue-ish white */
+  --bg-secondary: #ffffff;
+  --text-primary: #0f172a; /* Deep navy text */
+  --text-secondary: #475569;
+  
+  /* Accents based on the screenshot */
+  --accent-primary: #ff1493; /* Hot pink */
+  --accent-secondary: #0f172a; /* Deep navy for contrast */
+  --accent-tertiary: #f43f5e;
+  --accent-gradient: linear-gradient(135deg, var(--accent-primary), #ff6b6b);
+  --accent-gradient-subtle: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(15, 23, 42, 0.1));
+  
   --success: #10b981;
+  --success-glow: rgba(16, 185, 129, 0.2);
   --danger: #ef4444;
-  --border-color: rgba(255, 255, 255, 0.1);
-  --glass-bg: rgba(20, 20, 30, 0.6);
-  --glass-border: 1px solid rgba(255, 255, 255, 0.05);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --danger-glow: rgba(239, 68, 68, 0.2);
+  
+  /* Glassmorphism / Cards (Light theme) */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: 1px solid rgba(0, 0, 0, 0.05);
+  --glass-border-highlight: 1px solid rgba(255, 20, 147, 0.4);
+  --glass-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  --glass-shadow-hover: 0 10px 40px rgba(255, 20, 147, 0.2);
   --blur: blur(12px);
 }
 
@@ -26,17 +37,39 @@
 body {
   font-family: 'Inter', sans-serif;
   background-color: var(--bg-primary);
-  background-image: 
-    radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
   color: var(--text-primary);
   min-height: 100vh;
   overflow-x: hidden;
+  position: relative;
+}
+
+/* Animated Background Shapes (Light theme) */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(255, 20, 147, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(15, 23, 42, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.03) 0%, transparent 40%);
+  z-index: -1;
+  animation: bg-shift 15s ease-in-out infinite alternate;
+}
+
+@keyframes bg-shift {
+  0% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.05) translate(1%, 1%); }
+  100% { transform: scale(1) translate(-1%, -1%); }
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Outfit', sans-serif;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
 }
 
 /* Utils */
@@ -46,8 +79,14 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-backdrop-filter: var(--blur);
   border: var(--glass-border);
   box-shadow: var(--glass-shadow);
-  border-radius: 16px;
-  padding: 24px;
+  border-radius: 20px;
+  padding: 28px;
+  transition: all 0.3s ease;
+}
+
+.glass-panel:hover {
+  border-color: var(--glass-border-highlight);
+  box-shadow: var(--glass-shadow-hover);
 }
 
 .text-gradient {
@@ -55,26 +94,48 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  display: inline-block;
 }
 
+/* Buttons */
 .btn-primary {
-  background: var(--accent-gradient);
+  background: var(--accent-secondary); /* Dark navy button like "Let's Connect" */
   color: white;
   border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
-.btn-primary:hover {
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--accent-primary); /* Pink on hover */
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.btn-primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 8px 25px rgba(255, 20, 147, 0.3);
+}
+
+.btn-primary:hover:not(:disabled)::before {
+  opacity: 1;
 }
 
 .btn-primary:disabled {
@@ -82,53 +143,129 @@ h1, h2, h3, h4, h5, h6 {
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
+  background: #cbd5e1;
+}
+
+/* Custom Segmented Control */
+.segmented-control {
+  display: flex;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 6px;
+  border-radius: 99px;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+  position: relative;
+}
+
+.segment-btn {
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+  padding: 10px 24px;
+  border-radius: 99px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 2;
+}
+
+.segment-btn:hover:not(.active) {
+  color: var(--text-primary);
+}
+
+.segment-btn.active {
+  color: white;
+}
+
+.segment-active-bg {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  background: var(--accent-primary);
+  border-radius: 99px;
+  z-index: 1;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 10px rgba(255, 20, 147, 0.3);
 }
 
 /* Animations */
 @keyframes pulse-ring {
-  0% { transform: scale(0.8); opacity: 0.5; }
-  100% { transform: scale(1.3); opacity: 0; }
+  0% { transform: scale(0.8); opacity: 0.8; box-shadow: 0 0 0 0 rgba(255, 20, 147, 0.5); }
+  70% { transform: scale(1.1); opacity: 0; box-shadow: 0 0 0 15px rgba(255, 20, 147, 0); }
+  100% { transform: scale(0.8); opacity: 0; box-shadow: 0 0 0 0 rgba(255, 20, 147, 0); }
 }
 
 @keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-in {
-  animation: fade-in-up 0.5s ease forwards;
+  animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Markdown Specifics */
+.stagger-1 { animation-delay: 0.1s; opacity: 0; }
+.stagger-2 { animation-delay: 0.2s; opacity: 0; }
+.stagger-3 { animation-delay: 0.3s; opacity: 0; }
+
+/* Markdown Specifics (Light Theme) */
 .markdown-body {
   font-family: 'Inter', sans-serif;
-  line-height: 1.6;
-  color: var(--text-primary);
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
 }
 
-.markdown-body h1, .markdown-body h2 {
-  margin-top: 24px;
-  margin-bottom: 16px;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 8px;
+.markdown-body h1, .markdown-body h2, .markdown-body h3 {
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-primary);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.markdown-body h2 {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding-bottom: 0.5rem;
 }
 
 .markdown-body p {
-  margin-bottom: 16px;
-  color: var(--text-secondary);
+  margin-bottom: 1.2rem;
 }
 
 .markdown-body strong {
   color: var(--text-primary);
-  font-weight: 600;
+  font-weight: 700;
+  background: rgba(255, 20, 147, 0.05);
+  padding: 0 4px;
+  border-radius: 4px;
 }
 
 .markdown-body ul, .markdown-body ol {
-  margin-bottom: 16px;
-  padding-left: 24px;
-  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
 }
 
 .markdown-body li {
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.02); 
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.1); 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 20, 147, 0.5); 
 }

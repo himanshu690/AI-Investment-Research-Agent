@@ -49,26 +49,36 @@ export default function Timeline({ currentStep }) {
           return (
             <div key={step.id} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 1, width: '120px' }}>
               <div style={{ 
-                width: '48px', 
-                height: '48px', 
+                position: 'relative',
+                width: '56px', 
+                height: '56px', 
                 borderRadius: '50%', 
-                background: isActive ? 'var(--accent-primary)' : 'var(--bg-secondary)',
+                background: isActive ? 'var(--accent-gradient)' : 'rgba(0,0,0,0.02)',
                 display: 'flex', 
                 alignItems: 'center', 
                 justifyContent: 'center',
-                border: `2px solid ${isActive ? 'var(--accent-primary)' : 'var(--border-color)'}`,
-                boxShadow: isCurrent ? '0 0 0 8px rgba(99, 102, 241, 0.2)' : 'none',
-                transition: 'all 0.3s ease',
+                border: isActive ? 'none' : '2px solid rgba(0,0,0,0.05)',
+                boxShadow: isActive ? '0 4px 15px rgba(255, 20, 147, 0.4)' : 'none',
+                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                 color: isActive ? 'white' : 'var(--text-secondary)'
               }}>
-                <Icon size={24} />
+                {isCurrent && (
+                  <div style={{
+                    position: 'absolute',
+                    top: 0, left: 0, right: 0, bottom: 0,
+                    borderRadius: '50%',
+                    border: '2px solid var(--accent-primary)',
+                    animation: 'pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                  }} />
+                )}
+                <Icon size={24} style={{ zIndex: 1 }} />
               </div>
               <span style={{ 
                 marginTop: '1rem', 
                 fontSize: '0.85rem', 
                 textAlign: 'center',
-                color: isActive ? 'white' : 'var(--text-secondary)',
-                fontWeight: isCurrent ? '600' : '400'
+                color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
+                fontWeight: isCurrent ? '700' : '500'
               }}>
                 {step.label}
               </span>
