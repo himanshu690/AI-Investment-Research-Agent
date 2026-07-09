@@ -1,0 +1,43 @@
+{
+  "timestamp": "2026-07-06T06:18:28.383Z",
+  "companyName": "Apple",
+  "financialData": {
+    "ticker": "AAPL",
+    "name": "Apple",
+    "sector": "Technology",
+    "industry": "Consumer Electronics",
+    "summary": "Apple Inc. designs, manufactures, and markets smartphones, personal computers, tablets, wearables, and accessories worldwide. The company offers iPhone, a line of smartphones; Mac, a line of personal computers; iPad, a line of multi-purpose tablets; and wearables, home, and accessories comprising AirPods, Apple Vision Pro, Apple TV, Apple Watch, Beats products, and HomePod, as well as Apple branded and third-party accessories. It also provides AppleCare support and cloud services; and operates various platforms, including the App Store that allow customers to discover and download applications and digital content, such as books, music, video, games, and podcasts, as well as advertising services include third-party licensing arrangements and its own advertising platforms. In addition, the company offers various subscription-based services, such as Apple Arcade, a game subscription service; Apple Fitness+, a personalized fitness service; Apple Music, which offers users a curated listening experience with on-demand radio stations; Apple News+, a subscription news and magazine service; Apple TV, which offers exclusive original content and live sports; Apple Card, a co-branded credit card; and Apple Pay, a cashless payment service, as well as licenses its intellectual property. The company serves consumers, and small and mid-sized businesses; and the education, enterprise, and government markets. It distributes third-party applications for its products through the App Store. The company also sells its products through its retail and online stores, and direct sales force; and third-party cellular network carriers and resellers. The company was formerly known as Apple Computer, Inc. and changed its name to Apple Inc. in January 2007. Apple Inc. was founded in 1976 and is headquartered in Cupertino, California.",
+    "currentPrice": 308.63,
+    "revenueGrowth": 0.166,
+    "ebitdaMargins": 0.35437,
+    "debtToEquity": 79.548,
+    "returnOnEquity": 1.4147099,
+    "trailingPE": 37.319225,
+    "forwardPE": 32.119114,
+    "marketCap": 4532958920704,
+    "beta": 1.097
+  },
+  "newsData": [
+    {
+      "title": "Apple Stock News",
+      "content": "Apple Stock Is On The Rise After Recent Earnings Release. Is It A Buy Now ... Apple Stock Trade Risk Around Earnings Offers A 27% Reward. April 17, 2026."
+    },
+    {
+      "title": "Apple (AAPL) Stock Price, Chart & News — NASDAQ",
+      "content": "Past performance is not indicative of future results. There is a risk of losing some or all of your invested capital. Please assess your financial situation"
+    },
+    {
+      "title": "The Real Risk Inside Apple Stock",
+      "content": "For Apple, the primary risk isn't a dramatic new threat but the quiet pressure building beneath its own record-breaking performance. The"
+    },
+    {
+      "title": "Apple (Nasdaq:AAPL) - Stock Analysis",
+      "content": "Now 23% overvalued after recent price rise. Over the last 90 days, the stock has risen 14% to US$284. The fair value is estimated to be US$230, however this is"
+    },
+    {
+      "title": "Apple Inc. Stock Price: Quote, Forecast, Splits & News (AAPL)",
+      "content": "Apple shares rose nearly 3% on the final trading day of Q2, outperforming the broader tech sector (XLK), as investors rotated back into large-cap technology"
+    }
+  ],
+  "error": "Analyst failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.\n\nTroubleshooting URL: https://docs.langchain.com/oss/javascript/langchain/errors/MODEL_RATE_LIMIT/\n"
+}
