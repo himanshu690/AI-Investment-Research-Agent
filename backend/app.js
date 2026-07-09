@@ -13,7 +13,18 @@ connectDB();
 const app = express();
 
 // Standard middleware stack
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://ai-investment-research-agent-58gv.vercel.app",
+    ],
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
+
+
 app.use(express.json());
 
 // Base checking route to verify server performance
