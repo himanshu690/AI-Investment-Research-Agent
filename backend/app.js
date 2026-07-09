@@ -19,7 +19,7 @@ app.use(
       "http://localhost:5173",
       "https://ai-investment-research-agent-58gv.vercel.app",
     ],
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
     credentials: true,
   })
 );
@@ -105,7 +105,7 @@ app.get('/api/research', async (req, res) => {
 // Fetch search history (summary)
 app.get('/api/history', async (req, res) => {
   try {
-    const history = await SearchHistory.find().sort({ timestamp: -1 }).select('companyName timestamp');
+    const history = await SearchHistory.find().sort({ timestamp: -1 }).select('companyName timestamp finalState.finalDecision.verdict');
     res.json(history);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch history" });
@@ -120,6 +120,17 @@ app.get('/api/history/:id', async (req, res) => {
     res.json(record);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch record" });
+  }
+});
+
+// Delete a specific historic search result
+app.delete('/api/history/:id', async (req, res) => {
+  try {
+    const record = await SearchHistory.findByIdAndDelete(req.params.id);
+    if (!record) return res.status(404).json({ error: "Record not found" });
+    res.json({ message: "Record deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to delete record" });
   }
 });
 

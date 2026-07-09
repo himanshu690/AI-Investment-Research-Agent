@@ -1,0 +1,287 @@
+{
+  "timestamp": "2026-07-09T19:42:38.171Z",
+  "companyName": "Nvidia",
+  "financialData": {
+    "ticker": "NVDA",
+    "name": "Nvidia",
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "summary": "NVIDIA Corporation operates as a data center scale AI infrastructure company in the United States, Taiwan, China, Hong Kong, Europe, and internationally. It operates through Compute & Networking, and Graphics segments. The Compute & Networking segment provides data center accelerated computing and networking platforms and artificial intelligence solutions and software, and automotive platforms and autonomous and electric vehicle solutions, including software. The Graphics segment offers GeForce GPUs for gaming and PCs; Quadro/NVIDIA RTX GPUs for enterprise workstation graphics. The company's products are used in gaming, professional visualization, data center, and automotive markets. It sells its products to original equipment manufacturers, original device manufacturers, system integrators and distributors, independent software vendors, cloud service providers, add-in board manufacturers, distributors, automotive manufacturers and tier-1 automotive suppliers, and other ecosystem participants. NVIDIA Corporation was incorporated in 1993 and is headquartered in Santa Clara, California.",
+    "currentPrice": 203.87,
+    "revenueGrowth": 0.852,
+    "ebitdaMargins": 0.65294,
+    "debtToEquity": 6.555,
+    "returnOnEquity": 1.14288,
+    "trailingPE": 31.220518,
+    "forwardPE": 15.972478,
+    "marketCap": 4937935224832,
+    "beta": 2.211,
+    "historicalData": [
+      {
+        "date": "2025-07",
+        "price": 164.9199981689453
+      },
+      {
+        "date": "2025-07",
+        "price": 172.41000366210938
+      },
+      {
+        "date": "2025-07",
+        "price": 173.5
+      },
+      {
+        "date": "2025-07",
+        "price": 173.72000122070312
+      },
+      {
+        "date": "2025-08",
+        "price": 182.6999969482422
+      },
+      {
+        "date": "2025-08",
+        "price": 180.4499969482422
+      },
+      {
+        "date": "2025-08",
+        "price": 177.99000549316406
+      },
+      {
+        "date": "2025-08",
+        "price": 174.17999267578125
+      },
+      {
+        "date": "2025-09",
+        "price": 167.02000427246094
+      },
+      {
+        "date": "2025-09",
+        "price": 177.82000732421875
+      },
+      {
+        "date": "2025-09",
+        "price": 176.6699981689453
+      },
+      {
+        "date": "2025-09",
+        "price": 178.19000244140625
+      },
+      {
+        "date": "2025-09",
+        "price": 187.6199951171875
+      },
+      {
+        "date": "2025-10",
+        "price": 183.16000366210938
+      },
+      {
+        "date": "2025-10",
+        "price": 183.22000122070312
+      },
+      {
+        "date": "2025-10",
+        "price": 186.25999450683594
+      },
+      {
+        "date": "2025-10",
+        "price": 202.49000549316406
+      },
+      {
+        "date": "2025-11",
+        "price": 188.14999389648438
+      },
+      {
+        "date": "2025-11",
+        "price": 190.1699981689453
+      },
+      {
+        "date": "2025-11",
+        "price": 178.8800048828125
+      },
+      {
+        "date": "2025-11",
+        "price": 177
+      },
+      {
+        "date": "2025-12",
+        "price": 182.41000366210938
+      },
+      {
+        "date": "2025-12",
+        "price": 175.02000427246094
+      },
+      {
+        "date": "2025-12",
+        "price": 180.99000549316406
+      },
+      {
+        "date": "2025-12",
+        "price": 190.52999877929688
+      },
+      {
+        "date": "2025-12",
+        "price": 188.85000610351562
+      },
+      {
+        "date": "2026-01",
+        "price": 184.86000061035156
+      },
+      {
+        "date": "2026-01",
+        "price": 186.22999572753906
+      },
+      {
+        "date": "2026-01",
+        "price": 187.6699981689453
+      },
+      {
+        "date": "2026-01",
+        "price": 191.1300048828125
+      },
+      {
+        "date": "2026-02",
+        "price": 185.41000366210938
+      },
+      {
+        "date": "2026-02",
+        "price": 182.80999755859375
+      },
+      {
+        "date": "2026-02",
+        "price": 189.82000732421875
+      },
+      {
+        "date": "2026-02",
+        "price": 177.19000244140625
+      },
+      {
+        "date": "2026-03",
+        "price": 177.82000732421875
+      },
+      {
+        "date": "2026-03",
+        "price": 180.25
+      },
+      {
+        "date": "2026-03",
+        "price": 172.6999969482422
+      },
+      {
+        "date": "2026-03",
+        "price": 167.52000427246094
+      },
+      {
+        "date": "2026-03",
+        "price": 177.38999938964844
+      },
+      {
+        "date": "2026-04",
+        "price": 188.6300048828125
+      },
+      {
+        "date": "2026-04",
+        "price": 201.67999267578125
+      },
+      {
+        "date": "2026-04",
+        "price": 208.27000427246094
+      },
+      {
+        "date": "2026-04",
+        "price": 198.4499969482422
+      },
+      {
+        "date": "2026-05",
+        "price": 215.1999969482422
+      },
+      {
+        "date": "2026-05",
+        "price": 225.32000732421875
+      },
+      {
+        "date": "2026-05",
+        "price": 215.3300018310547
+      },
+      {
+        "date": "2026-05",
+        "price": 211.13999938964844
+      },
+      {
+        "date": "2026-06",
+        "price": 205.10000610351562
+      },
+      {
+        "date": "2026-06",
+        "price": 205.19000244140625
+      },
+      {
+        "date": "2026-06",
+        "price": 210.69000244140625
+      },
+      {
+        "date": "2026-06",
+        "price": 192.52999877929688
+      },
+      {
+        "date": "2026-06",
+        "price": 194.8300018310547
+      },
+      {
+        "date": "2026-07",
+        "price": 204.1199951171875
+      },
+      {
+        "date": "2026-07",
+        "price": 203.8699951171875
+      }
+    ],
+    "quarterlyData": [
+      {
+        "quarter": "2Q2025",
+        "revenue": 46743000000,
+        "earnings": 25783000000
+      },
+      {
+        "quarter": "3Q2025",
+        "revenue": 57006000000,
+        "earnings": 31767000000
+      },
+      {
+        "quarter": "4Q2025",
+        "revenue": 68127000000,
+        "earnings": 39552000000
+      },
+      {
+        "quarter": "1Q2026",
+        "revenue": 81615000000,
+        "earnings": 45548000000
+      }
+    ]
+  },
+  "newsData": [
+    {
+      "title": "NVIDIA Corporation (NVDA) Stock Price, Quote, News & Analysis",
+      "content": "### [Nvidia: It's About To Get Much Worse](https://seekingalpha.com/article/4920640-nvidia-its-about-to-get-much-worse#source=section%3Asummary%7Csection_asset%3Aall_analysis%7Cfirst_level_url%3Asymbol%7Cbutton%3ATitle%7Clock_status%3ANo%7Cline%3A1). ### [Nvidia: The Outlier In AI Remains A Buy](https://seekingalpha.com/article/4920355-nvidia-the-outlier-in-ai-remains-a-buy#source=section%3Asummary%7Csection_asset%3Aall_analysis%7Cfirst_level_url%3Asymbol%7Cbutton%3ATitle%7Clock_status%3ANo%7Cline%3A2). ### [Nvidia Just Entered A $200 Billion Market - History Says What Happens Next](https://seekingalpha.com/article/4920101-nvidia-just-entered-a-200-billion-market-history-says-what-happens-next#source=section%3Asummary%7Csection_asset%3Aall_analysis%7Cfirst_level_url%3Asymbol%7Cbutton%3ATitle%7Clock_status%3ANo%7Cline%3A4). [Rick Orford](https://seekingalpha.com/author/rick-orford#source=section%3Asummary%7Csection_asset%3Aall_analysis%7Cfirst_level_url%3Asymbol%7Cbutton%3AAuthor%7Clock_status%3ANo%7Cline%3A4)Mon, Jul. 06[25 Comments](https://seekingalpha.com/article/4920101-nvidia-just-entered-a-200-billion-market-history-says-what-happens-next#scroll_comments#source=section%3Asummary%7Csection_asset%3Aall_analysis%7Cfirst_level_url%3Asymbol%7Cbutton%3ATitle%7Clock_status%3ANo%7Cline%3A4). ### [Nvidia: Won't Be This Insanely Cheap For Too Long](https://seekingalpha.com/article/4919700-nvidia-would-not-be-insanely-cheap-for-too-long#source=section%3Asummary%7Csection_asset%3Aall_analysis%7Cfirst_level_url%3Asymbol%7Cbutton%3ATitle%7Clock_status%3ANo%7Cline%3A5). ### [Nvidia: The Drawdown Is An Opportunity To Pounce](https://seekingalpha.com/article/4919444-nvidia-stock-drawdown-an-opportunity-to-pounce#source=section%3Asummary%7Csection_asset%3Aall_analysis%7Cfirst_level_url%3Asymbol%7Cbutton%3ATitle%7Clock_status%3ANo%7Cline%3A6). ### [Nvidia: Don't Underestimate Digestion Risk, I'm Buying Harley Instead](https://seekingalpha.com/article/4919219-nvidia-dont-underestimate-digestion-risk-im-buying-harley-instead#source=section%3Asummary%7Csection_asset%3Aall_analysis%7Cfirst_level_url%3Asymbol%7Cbutton%3ATitle%7Clock_status%3ANo%7Cline%3A7). ### [Nvidia: Strong Growth Story, But Risks Grow Faster](https://seekingalpha.com/article/4918833-nvidia-strong-growth-story-but-risks-grow-faster#source=section%3Asummary%7Csection_asset%3Aall_analysis%7Cfirst_level_url%3Asymbol%7Cbutton%3ATitle%7Clock_status%3ANo%7Cline%3A8). [Daniel Schönberger](https://seekingalpha.com/author/daniel-schonberger#source=section%3Asummary%7Csection_asset%3Aall_analysis%7Cfirst_level_url%3Asymbol%7Cbutton%3AAuthor%7Clock_status%3ANo%7Cline%3A8)Tue, Jun. 30[68 Comments](https://seekingalpha.com/article/4918833-nvidia-strong-growth-story-but-risks-grow-faster#scroll_comments#source=section%3Asummary%7Csection_asset%3Aall_analysis%7Cfirst_level_url%3Asymbol%7Cbutton%3ATitle%7Clock_status%3ANo%7Cline%3A8). ### [Nvidia: 3 Key Threats Are Gaining Momentum And Visibility](https://seekingalpha.com/article/4918272-nvidia-3-key-threats-are-gaining-momentum-and-visibility#source=section%3Asummary%7Csection_asset%3Aall_analysis%7Cfirst_level_url%3Asymbol%7Cbutton%3ATitle%7Clock_status%3ANo%7Cline%3A9). ### [Nvidia: The Next Dividend Aristocrat?](https://seekingalpha.com/article/4917842-nvidia-the-next-dividend-aristocrat#source=section%3Asummary%7Csection_asset%3Aall_analysis%7Cfirst_level_url%3Asymbol%7Cbutton%3ATitle%7Clock_status%3ANo%7Cline%3A10). SA News Today, 2:46 PM[3 Comments](https://seekingalpha.com/news/4612399-nvidia-in-focus-as-nemotron-3-ultra-ai-model-surpasses-closed-models-in-cost#scroll_comments#source=section%3Asummary%7Csection_asset%3Aall_news%7Cfirst_level_url%3Asymbol%7Cbutton%3ATitle%7Clock_status%3ANo%7Cline%3A1). SA News Today, 2:44 PM[10 Comments](https://seekingalpha.com/news/4612395-nvidia-flashes-buy-signals-at-decade-low-valuation---22v#scroll_comments#source=section%3Asummary%7Csection_asset%3Aall_news%7Cfirst_level_url%3Asymbol%7Cbutton%3ATitle%7Clock_status%3ANo%7Cline%3A2). SA News Today, 10:14 AM[20 Comments](https://seekingalpha.com/news/4612207-ai-chip-stocks-fall-after-us-iran-conflict-escalates#scroll_comments#source=section%3Asummary%7Csection_asset%3Aall_news%7Cfirst_level_url%3Asymbol%7Cbutton%3ATitle%7Clock_status%3ANo%7Cline%3A5). SA News Today, 9:48 AM[1 Comment](https://seekingalpha.com/news/4612276-clearbridge-dividend-strategy-adds-nvidia-tsm-exits-unitedhealth-among-q2-moves#scroll_comments#source=section%3Asummary%7Csection_asset%3Aall_news%7Cfirst_level_url%3Asymbol%7Cbutton%3ATitle%7Clock_status%3ANo%7Cline%3A6). SA News Today, 9:25 AM[8 Comments](https://seekingalpha.com/news/4612269-nvidia-reiterated-buy-at-bofa-firm-sees-compelling-value-multiple#scroll_comments#source=section%3Asummary%7Csection_asset%3Aall_news%7Cfirst_level_url%3Asymbol%7Cbutton%3ATitle%7Clock_status%3ANo%7Cline%3A7). ### [Nvidia trades at its cheapest valuation since pre‑AI boom](https://seekingalpha.com/news/4612200-nvidia-trades-at-its-cheapest-valuation-since-preai-boom#source=section%3Asummary%7Csection_asset%3Aall_news%7Cfirst_level_url%3Asymbol%7Cbutton%3ATitle%7Clock_status%3ANo%7Cline%3A8). SA News Today, 6:55 AM[24 Comments](https://seekingalpha.com/news/4612200-nvidia-trades-at-its-cheapest-valuation-since-preai-boom#scroll_comments#source=section%3Asummary%7Csection_asset%3Aall_news%7Cfirst_level_url%3Asymbol%7Cbutton%3ATitle%7Clock_status%3ANo%7Cline%3A8). SA News Today, 12:57 AM[1 Comment](https://seekingalpha.com/news/4612130-samsung-boots-up-mass-production-of-advanced-storage-for-nvidias-vera-rubin-ai-platform#scroll_comments#source=section%3Asummary%7Csection_asset%3Aall_news%7Cfirst_level_url%3Asymbol%7Cbutton%3ATitle%7Clock_status%3ANo%7Cline%3A9). SA News Yesterday, 8:42 AM[3 Comments](https://seekingalpha.com/news/4611918-nvidia-backed-nscale-closes-900m-revolving-credit-facility#scroll_comments#source=section%3Asummary%7Csection_asset%3Aall_news%7Cfirst_level_url%3Asymbol%7Cbutton%3ATitle%7Clock_status%3ANo%7Cline%3A10). SA News Yesterday, 8:42 AM[18 Comments](https://seekingalpha.com/news/4611910-nvidia-amd-chips-face-further-displacement-in-china-from-domestic-options-survey#scroll_comments#source=section%3Asummary%7Csection_asset%3Aall_news%7Cfirst_level_url%3Asymbol%7Cbutton%3ATitle%7Clock_status%3ANo%7Cline%3A11)."
+    },
+    {
+      "title": "NVIDIA Could Explode After This Massive Wall Street Mistake",
+      "content": "NVIDIA Could Explode After This Massive Wall Street Mistake\nRick Orford - Trading Stocks and Options For All\n84800 subscribers\n321 likes\n12124 views\n16 Apr 2026\nNVIDIA just got swept into one of the biggest institutional sell-offs in years, but the real story may have nothing to do with its business. I break down what hedge funds are actually afraid of, why Wall Street sentiment turned so fast, and why that fear could be creating a major disconnect in NVIDIA stock.\n\nWhile big money hit the eject button, NVIDIA kept posting explosive growth, massive AI demand, and a trillion-dollar chip opportunity through 2027. I’m digging into the numbers, the risks, and the setup that could decide whether this is a rare buying opportunity or a warning investors can’t afford to ignore.\n\nKey takeaways:\n✅ Why hedge funds dumped NVIDIA so aggressively\n✅ What Wall Street may be missing right now\n✅ The biggest bullish catalysts still ahead\n✅ The real risks that could break the thesis\n\nSkip ahead:\n0:00 - Intro\n1:16 - Hedge funds hit the eject button\n2:33 - The fears behind the hedge fund selling\n5:23 - NVIDIA's fundamentals\n7:38 - The contrarian signal \n9:53 - What investors should watch next\n\n#NVIDIA #NVDA #NvidiaStock #NVDAStock #AIStocks #ArtificialIntelligence #StockMarket #Investing #GrowthStocks #SemiconductorStocks #ChipStocks #TechStocks #WallStreet #HedgeFunds #StockAnalysis #StockMarketNews #WealthBuilding #LongTermInvesting #ValueInvesting #Barchart #MotleyFool #RickOrford\n\n🚀 Grab Your 10 Stock Picks From Stock Advisor: https://fool.com/ricko\n💬 Discord: https://rickorford.com/join\n🌐 Website: https://rickorford.com\n📈 Try Barchart's Free Stock Screener: https://rickorford.com/barchart-stocks\n🔔 Don’t forget to like, subscribe, and turn on notifications for more exclusive content!\n\nAbout Rick:\nRick Orford is a Wall Street Journal best-selling author, serial entrepreneur, and financial expert who achieved financial independence at age 35. Following the sale of two tech startups, Rick was elected to the board of directors for a financial institution managing $200M+.\n\nWith 25 years of experience in stocks and options, he authored The Financially Independent Millennial to mentor the next generation of investors. A frequent contributor to Seeking Alpha, Barchart, and The Motley Fool, Rick’s insights have been featured by the most prominent outlets, including Good Morning America. When not thinking about finance, he balances his time between financial coaching, travel, and culinary pursuits.\n\nLinkedIn: https://www.linkedin.com/in/rickorford/\nMuckRack: https://muckrack.com/rickorford/\nMotley Fool: https://www.fool.com/author/20648/\nSeeking Alpha: https://seekingalpha.com/author/rick-orford\nBarchart: https://www.barchart.com/news/authors/111/rick-orford\n\nDISCLAIMER: Stock prices used were the market prices of April 10, 2026. The video was published on April 16, 2026. A portion of this video is sponsored by The Motley Fool. Visit https://fool.com/ricko to get access to my special offer. The Motley Fool Stock Advisor returns are 981% as of 12/10/2025 and measured against the S&P 500 returns of 194% as of 12/10/2025. Dividend Aristocrats® is a registered trademark of Standard & Poor's Financial Services LLC. Past performance is not an indicator of future results. All investing involves a risk of loss. Individual investment results may vary, not all Motley Fool Stock Advisor picks have performed as well. On the date of publication, Rick Orford did not have (either directly or indirectly) positions in any of the securities mentioned in this video. This video is for educational purposes only and not financial advice. Always do your own research and consult with a financial advisor before making any investment decisions. All information and data on this YouTube Channel is solely for entertainment purposes. I'm not a financial advisor, nor licensed in any way to provide any financial advice. The information herein is based solely on my personal opinion and experience. All investments hold inherent risk, and the information provided on this YouTube Channel should not be interpreted as any kind of guidance, recommendation, offer, advice, or suggestion. Any ideas and strategies discussed on this channel should not be implemented without first considering your financial and personal circumstances or without consulting a financial professional.\n18 comments\n"
+    },
+    {
+      "title": "NVDA: NVIDIA Corp - Stock Price, Quote and News",
+      "content": "[Markets](https://www.cnbc.com/markets/). *   [Currencies](https://www.cnbc.com/currencies/). *   [Cryptocurrency](https://www.cnbc.com/cryptocurrency/). *   [Bonds](https://www.cnbc.com/bonds/). [Business](https://www.cnbc.com/business/). *   [Economy](https://www.cnbc.com/economy/). *   [Finance](https://www.cnbc.com/finance/). *   [Media](https://www.cnbc.com/media/). *   [Energy](https://www.cnbc.com/energy/). *   [Climate](https://www.cnbc.com/climate/). *   [Transportation](https://www.cnbc.com/transportation/). *   [Industrials](https://www.cnbc.com/industrials/). *   [Retail](https://www.cnbc.com/retail/). *   [Wealth](https://www.cnbc.com/wealth/). *   [Sports](https://www.cnbc.com/sports/). *   [Life](https://www.cnbc.com/life/). [Investing](https://www.cnbc.com/investing/). *   [Fintech](https://www.cnbc.com/fintech/). *   [Earnings](https://www.cnbc.com/earnings/). [Tech](https://www.cnbc.com/technology/). *   [Cybersecurity](https://www.cnbc.com/cybersecurity/). *   [Enterprise](https://www.cnbc.com/enterprise/). *   [Internet](https://www.cnbc.com/internet/). *   [Media](https://www.cnbc.com/media/). *   [Mobile](https://www.cnbc.com/mobile/). [Politics](https://www.cnbc.com/politics/). *   [Policy](https://www.cnbc.com/policy/). *   [Defense](https://www.cnbc.com/defense/). *   [Congress](https://www.cnbc.com/congress/). [Video](https://www.cnbc.com/tv/). [Watchlist](https://www.cnbc.com/watchlist/). *   [My Portfolio](https://www.cnbc.com/my-portfolio/). *   [INTL](https://www.cnbc.com/world/). [Watchlist](https://www.cnbc.com/watchlist/). [SIGN IN](https://www.cnbc.com/quotes/NVDA#). [Create free account](https://www.cnbc.com/quotes/NVDA#). [Markets](https://www.cnbc.com/markets/). [Business](https://www.cnbc.com/business/). [Investing](https://www.cnbc.com/investing/). [Tech](https://www.cnbc.com/technology/). [Politics](https://www.cnbc.com/politics/). [Video](https://www.cnbc.com/tv/). [Watchlist](https://www.cnbc.com/watchlist/). [](https://www.cnbc.com/investingclub/). [SIGN IN](https://www.cnbc.com/quotes/NVDA#). *   [](https://www.cnbc.com/pro/)[SpaceX is racing toward orbital data centers. *   [](https://www.cnbc.com/pro/)[SpaceX is racing toward orbital data centers. [More](https://www.cnbc.com/quotes/NVDA?tab=earnings). [More](https://www.cnbc.com/quotes/NVDA?tab=peers). | [NVDA](https://www.cnbc.com/quotes/NVDA) | 204.12 | 7.19 | 3.651 |. [](https://www.cnbc.com/closing-bell/). [MORE](https://www.cnbc.com/quotes/NVDA?tab=profile). *   [](https://www.facebook.com/cnbc/). *   [](https://www.twitter.com/cnbc/). *   [](https://www.linkedin.com/company/cnbc/). *   [](https://www.instagram.com/cnbc/). *   [](https://www.youtube.com/user/cnbc/). *   [](https://www.cnbc.com/rss-feeds/). *   [CNBC Councils](https://www.cnbccouncils.com/). *   [Corrections](https://www.cnbc.com/corrections/). *   [About CNBC](https://www.cnbc.com/about/). *   [Site Map](https://www.cnbc.com/site-map/). *   [Podcasts](https://www.cnbc.com/podcast/). [Get In Touch](https://www.cnbc.com/news-tips/). *   ![Image 25: California Consumer Privacy Act (CCPA) Opt-Out Icon](https://static-redesign.cnbcfm.com/dist/17269f1b6083fd5f61be.svg)[Your Privacy Choices](https://www.cnbc.com/quotes/NVDA). *   [Terms of Service](https://www.cnbc.com/terms/). Data also provided by[![Image 26: Reuters logo](https://static-redesign.cnbcfm.com/dist/09c161b9810767a7849e.svg)](https://www.cnbc.com/market-data-terms-of-service/)."
+    },
+    {
+      "title": "NVDA News Today | Why did NVIDIA stock go up today? $NVDA",
+      "content": "[Skip to main content](https://www.marketbeat.com/stocks/NASDAQ/NVDA/news#main). *   [Stock Screeners](https://www.marketbeat.com/screeners/). *   [7 AI Stocks to Invest In](https://www.marketbeat.com/all-access/reports/?report=7aistocks). *   [Top-Rated Stocks](https://www.marketbeat.com/stocks/top-rated/). *   [Congressional Data](https://www.marketbeat.com/congress-stock-trades/). *   [Recent Trades](https://www.marketbeat.com/congress-stock-trades/). *   [Breakout Stocks](https://www.marketbeat.com/market-data/breakout-stocks/). *   [Most Active](https://www.marketbeat.com/market-data/most-active-stocks/). *   [Most Active Stocks](https://www.marketbeat.com/market-data/most-active-stocks/). *   [Most Volatile Stocks](https://www.marketbeat.com/market-data/most-volatile-stocks/). *   [Stock Lists](https://www.marketbeat.com/stocks/). *   [All Stock Lists](https://www.marketbeat.com/stocks/). *   [Stocks by Interest](https://www.marketbeat.com/types-of-stock/). *   [Stocks Under $1](https://www.marketbeat.com/market-data/low-priced-stocks/stocks-under-1/). *   [Stocks Under $2](https://www.marketbeat.com/market-data/low-priced-stocks/stocks-under-2/). *   [Stocks Under $5](https://www.marketbeat.com/market-data/low-priced-stocks/stocks-under-5/). *   [Stocks by Exchange](https://www.marketbeat.com/stocks/). *   [NASDAQ Stocks](https://www.marketbeat.com/stocks/NASDAQ/). *   [Stocks by Sector](https://www.marketbeat.com/stocks/sectors/). *   [Technical Indicators](https://www.marketbeat.com/stocks/). *   [Stock Comparisons](https://www.marketbeat.com/compare-stocks/). *   [Top-Rated Stocks](https://www.marketbeat.com/stocks/top-rated/). *   [Stock Analysis](https://www.marketbeat.com/stocks/NASDAQ/NVDA/). *   [Analyst Forecasts](https://www.marketbeat.com/stocks/NASDAQ/NVDA/forecast/). *   [Chart](https://www.marketbeat.com/stocks/NASDAQ/NVDA/chart/). *   [Competitors](https://www.marketbeat.com/stocks/NASDAQ/NVDA/competitors-and-alternatives/). *   [Dividend](https://www.marketbeat.com/stocks/NASDAQ/NVDA/dividend/). *   [Earnings](https://www.marketbeat.com/stocks/NASDAQ/NVDA/earnings/). *   [Financials](https://www.marketbeat.com/stocks/NASDAQ/NVDA/financials/). *   [Headlines](https://www.marketbeat.com/stocks/NASDAQ/NVDA/news/). *   [Insider Trades](https://www.marketbeat.com/stocks/NASDAQ/NVDA/insider-trades/). *   [Options Chain](https://www.marketbeat.com/stocks/NASDAQ/NVDA/options/). *   [Ownership](https://www.marketbeat.com/stocks/NASDAQ/NVDA/institutional-ownership/). *   [Short Interest](https://www.marketbeat.com/stocks/NASDAQ/NVDA/short-interest/). *   [Trends](https://www.marketbeat.com/stocks/NASDAQ/NVDA/trends-and-sentiment/). *   [Apple News](https://www.marketbeat.com/stocks/NASDAQ/AAPL/news/). *   [Broadcom News](https://www.marketbeat.com/stocks/NASDAQ/AVGO/news/). *   [Alphabet News](https://www.marketbeat.com/stocks/NASDAQ/GOOG/news/). *   [Alphabet News](https://www.marketbeat.com/stocks/NASDAQ/GOOGL/news/). *   [Intel News](https://www.marketbeat.com/stocks/NASDAQ/INTC/news/). *   [Microsoft News](https://www.marketbeat.com/stocks/NASDAQ/MSFT/news/). *   [Tesla News](https://www.marketbeat.com/stocks/NASDAQ/TSLA/news/). \"Email this page\")[](https://www.marketbeat.com/stocks/NASDAQ/NVDA/news/ \"Copy the URL of this page to the clipboard\"). *   [Sign In](https://www.marketbeat.com/stocks/NASDAQ/NVDA/news#pnlLoginOnModal). *   [Create Account](https://www.marketbeat.com/stocks/NASDAQ/NVDA/news#pnlCreate). *   [](https://www.marketbeat.com/stocks/NASDAQ/NVDA/news#pnlCreate \"Close Login Modal\"). *   [About](https://www.marketbeat.com/about/). *   [Stock Lists](https://www.marketbeat.com/stocks/)."
+    },
+    {
+      "title": "NVIDIA Corporation (NVDA) Stock Price, News, Quote & History - Yahoo Finance",
+      "content": "2. Best 0% APR cards. 3. Best balance transfer cards. 2. Best high-yield savings accounts. 3. Best money market accounts. 4. Best free checking accounts. 2. Tax brackets and rates. 3. How to get approved. # NVIDIA Corporation (NVDA). ## News headlines Nvidia's valuation has hit a multiyear low despite record revenue, indicating market shifts. Recent reports highlight a strong growth trajectory in generative AI, with Nvidia positioned as a key player alongside major tech firms. Nvidia's valuation has hit a multiyear low despite record revenue, indicating market shifts. * Market Cap (intraday)  4.944T. NVIDIA Corporation operates as a data center scale AI infrastructure company in the United States, Taiwan, China, Hong Kong, Europe, and internationally. The Compute & Networking segment provides data center accelerated computing and networking platforms and artificial intelligence solutions and software, and automotive platforms and autonomous and electric vehicle solutions, including software. The company's products are used in gaming, professional visualization, data center, and automotive markets. ### 1-Year Return. ### Analyst Price Targets."
+    }
+  ],
+  "analystReport": "**Comprehensive Analysis of Nvidia (NVDA)**\n\n**Financial Health:**\nNvidia's financial health is strong, with a market capitalization of $4.944 trillion and a debt-to-equity ratio of 6.555. The company's revenue growth rate is 0.852, and its EBITDA margins are 0.65294. The return on equity (ROE) is 1.14288, indicating that Nvidia is generating profits from its shareholders' equity.\n\n**Growth Prospects:**\nNvidia's growth prospects are promising, with a strong growth trajectory in generative AI. The company is positioned as a key player in the AI industry, alongside major tech firms. The quarterly data shows a significant increase in revenue and earnings, with a revenue growth rate of 74.6% and an earnings growth rate of 54.5% in the most recent quarter.\n\n**Valuation:**\nNvidia's valuation has hit a multi-year low despite record revenue, indicating market shifts. The forward P/E ratio is 15.972478, which is lower than the trailing P/E ratio of 31.220518. This suggests that the market expects Nvidia's earnings to grow in the future.\n\n**Risks:**\nThere are several risks associated with investing in Nvidia, including:\n\n1. **Competition:** The AI industry is highly competitive, and Nvidia faces competition from other tech firms.\n2. **Regulatory Risks:** Nvidia's business is subject to various regulations, including those related to data protection and AI development.\n3. **Economic Risks:** Nvidia's business is sensitive to economic downturns, which can impact demand for its products.\n\n**Recent News:**\nThe recent news articles suggest that Nvidia's stock price has been volatile, with some analysts predicting a potential upside and others warning of a potential downside. The company's valuation has hit a multi-year low, despite record revenue, indicating market shifts.\n\n**Conclusion:**\nIn conclusion, Nvidia's financial health is strong, and its growth prospects are promising. However, the company faces several risks, including competition, regulatory risks, and economic risks. The recent news articles suggest that the market is volatile, and investors should exercise caution when investing in Nvidia. Overall, Nvidia is a strong company with a solid financial foundation, but investors should carefully consider the risks and valuation before making an investment decision.\n\n**Recommendation:**\nBased on the analysis, I would recommend a **BUY** rating for Nvidia, with a target price of $220. The company's strong financial health, promising growth prospects, and low valuation make it an attractive investment opportunity. However, investors should be aware of the risks associated with investing in Nvidia and should carefully consider their investment goals and risk tolerance before making a decision.",
+  "finalDecision": {
+    "verdict": "INVEST",
+    "thesis": "# Introduction\nNvidia is a strong company with a solid financial foundation, a market capitalization of $4.944 trillion, and a debt-to-equity ratio of 6.555.\n## Financial Health\n* Revenue growth rate: 0.852\n* EBITDA margins: 0.65294\n* Return on equity (ROE): 1.14288\n## Growth Prospects\n* Strong growth trajectory in generative AI\n* Positioned as a key player in the AI industry\n* Quarterly revenue growth rate: 74.6%\n* Quarterly earnings growth rate: 54.5%\n## Valuation\n* Forward P/E ratio: 15.972478\n* Trailing P/E ratio: 31.220518\n## Risks\n* Competition from other tech firms\n* Regulatory risks related to data protection and AI development\n* Economic risks impacting demand for products\n## Conclusion\nNvidia's strong financial health, promising growth prospects, and low valuation make it an attractive investment opportunity. While there are risks associated with investing in Nvidia, the company's solid foundation and growth potential outweigh these risks. Therefore, I recommend an **INVEST** decision."
+  }
+}

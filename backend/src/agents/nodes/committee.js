@@ -3,7 +3,7 @@ import { SystemMessage, HumanMessage } from "@langchain/core/messages";
 import { z } from "zod";
 
 const decisionSchema = z.object({
-  verdict: z.enum(["INVEST", "PASS"]).describe("The final investment decision."),
+  verdict: z.enum(["INVEST", "REJECT"]).describe("The final investment decision."),
   thesis: z.string().describe("A comprehensive markdown-formatted investment thesis explaining the reasoning behind the verdict.")
 });
 
@@ -11,7 +11,7 @@ export async function committeeNode(state) {
   console.log(`[Committee] Reaching final verdict for: ${state.companyName}`);
 
   if (state.error) {
-     return { finalDecision: { verdict: "PASS", thesis: `**Error during research:** ${state.error}` } };
+     return { finalDecision: { verdict: "REJECT", thesis: `**Error during research:** ${state.error}` } };
   }
 
   const llm = new ChatGroq({
@@ -21,7 +21,7 @@ export async function committeeNode(state) {
   }).withStructuredOutput(decisionSchema);
 
   const sysMsg = new SystemMessage(
-    "You are the head of the Investment Committee. Review the Analyst's report and the underlying facts. Make a definitive INVEST or PASS decision. Provide a detailed markdown thesis supporting your decision, structured with headers, bullet points, and quantitative highlights."
+    "You are the head of the Investment Committee. Review the Analyst's report and the underlying facts. Make a definitive INVEST or REJECT decision. Be strict. If a company has poor financials, high debt, or negative growth, you MUST choose REJECT. Provide a detailed markdown thesis supporting your decision, structured with headers, bullet points, and quantitative highlights."
   );
 
   const humanMsg = new HumanMessage(

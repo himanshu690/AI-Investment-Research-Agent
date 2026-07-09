@@ -25,6 +25,11 @@ export default function Dashboard() {
       
       const data = await response.json();
       setReportData(data.finalState);
+      setCompanyName(data.companyName);
+      
+      setTimeout(() => {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      }, 100);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -32,13 +37,30 @@ export default function Dashboard() {
     }
   };
 
-  const startResearch = (e) => {
+  const startResearch = async (e) => {
     e.preventDefault();
     if (!companyName.trim()) return;
 
     setIsProcessing(true);
     setReportData(null);
     setError(null);
+    setViewMode('new');
+
+    try {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const historyRes = await fetch(`${API_URL}/api/history`);
+      if (historyRes.ok) {
+        const historyData = await historyRes.json();
+        const match = historyData.find(item => item.companyName.toLowerCase() === companyName.trim().toLowerCase());
+        if (match) {
+           await loadHistoricReport(match._id);
+           return;
+        }
+      }
+    } catch(err) {
+      console.warn("Failed to check history", err);
+    }
+
     setCurrentStep('INIT');
 
     const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
@@ -56,6 +78,10 @@ export default function Dashboard() {
         setReportData(data.state);
         setIsProcessing(false);
         eventSource.close();
+
+        setTimeout(() => {
+          window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }, 100);
       } else {
         setCurrentStep(data.step);
       }

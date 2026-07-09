@@ -1,11 +1,29 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { CheckCircle, XCircle } from 'lucide-react';
+import { AreaChart, Area, LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, Legend, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer } from 'recharts';
 
 export default function ReportViewer({ data }) {
   if (!data || !data.finalDecision) return null;
 
-  const isSuccess = ['INVEST', 'PASS'].includes(data.finalDecision.verdict.toUpperCase());
+  const isSuccess = data.finalDecision.verdict.toUpperCase() === 'INVEST';
+  const displayVerdict = isSuccess ? 'INVEST' : 'PASS';
+  const histData = data.financialData?.historicalData || [];
+  const quartData = data.financialData?.quarterlyData || [];
+  
+  // Format quarterly data
+  const barData = quartData.map(q => ({
+    name: q.quarter,
+    revenue: q.revenue / 1e9 // in Billions
+  }));
+
+  // Format Pie Data (Revenue Allocation for latest quarter: Profit vs Operating Costs)
+  const recentQuarter = quartData.length > 0 ? quartData[quartData.length - 1] : null;
+  const pieData = recentQuarter ? [
+    { name: 'Net Profit', value: Math.max(0, recentQuarter.earnings) },
+    { name: 'Operating Costs', value: Math.max(0, recentQuarter.revenue - recentQuarter.earnings) }
+  ] : [];
+  const pieColors = ['#0ea5e9', '#4ade80']; // Match image style a bit better
 
   return (
     <div className="animate-fade-in" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2rem' }}>
@@ -29,10 +47,93 @@ export default function ReportViewer({ data }) {
         {isSuccess ? <CheckCircle size={64} color="var(--success)" style={{ zIndex: 1 }} /> : <XCircle size={64} color="var(--danger)" style={{ zIndex: 1 }} />}
         <div style={{ zIndex: 1 }}>
           <h2 style={{ fontSize: '3rem', margin: '0 0 0.5rem 0', color: isSuccess ? 'var(--success)' : 'var(--danger)', textShadow: isSuccess ? '0 0 20px var(--success-glow)' : '0 0 20px var(--danger-glow)' }}>
-            {data.finalDecision.verdict}
+            {displayVerdict}
           </h2>
           <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '1.2rem' }}>Final Committee Decision for <strong style={{ color: 'var(--text-primary)' }}>{data.companyName}</strong></p>
         </div>
+      </div>
+
+      {/* 3-Panel Data Visualization Grid */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+        
+        {/* Quarterly Revenue */}
+        <div className="glass-panel" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', background: '#fff' }}>
+          <h3 style={{ marginBottom: '1.5rem', fontSize: '1.2rem', color: '#111', fontWeight: 700 }}>Quarterly Revenue</h3>
+          {barData.length > 0 ? (
+            <div style={{ width: '100%', height: '240px' }}>
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={barData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(0,0,0,0.05)" />
+                  <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: '#666' }} dy={10} />
+                  <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: '#666' }} tickFormatter={(val) => `$${val}B`} />
+                  <RechartsTooltip 
+                    contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}
+                    formatter={(value) => [`$${value.toFixed(2)}B`, 'Revenue']}
+                  />
+                  <Bar dataKey="revenue" fill="#4ade80" radius={[2, 2, 0, 0]} barSize={25} />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          ) : (
+            <p style={{ color: 'var(--text-secondary)', margin: 'auto' }}>No data</p>
+          )}
+        </div>
+
+        {/* Last Year Price */}
+        <div className="glass-panel" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', background: '#fff' }}>
+          <h3 style={{ marginBottom: '1.5rem', fontSize: '1.2rem', color: '#111', fontWeight: 700 }}>Last Year</h3>
+          {histData.length > 0 ? (
+            <div style={{ width: '100%', height: '240px' }}>
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={histData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(0,0,0,0.05)" />
+                  <XAxis dataKey="date" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: '#666' }} dy={10} minTickGap={30} />
+                  <YAxis domain={['auto', 'auto']} axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: '#666' }} tickFormatter={(val) => `$${val.toFixed(0)}`} />
+                  <RechartsTooltip 
+                    contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}
+                    formatter={(value) => [`$${value.toFixed(2)}`, 'Price']}
+                  />
+                  <Line type="monotone" dataKey="price" stroke="#3b82f6" strokeWidth={2} dot={false} activeDot={{ r: 6, fill: '#3b82f6', stroke: '#fff', strokeWidth: 2 }} />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+          ) : (
+            <p style={{ color: 'var(--text-secondary)', margin: 'auto' }}>No data</p>
+          )}
+        </div>
+
+        {/* Company's Allocation */}
+        <div className="glass-panel" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', background: '#fff' }}>
+          <h3 style={{ marginBottom: '1.5rem', fontSize: '1.2rem', color: '#111', fontWeight: 700 }}>Company's Allocation</h3>
+          {pieData.length > 0 ? (
+            <div style={{ width: '100%', height: '240px' }}>
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={pieData}
+                    cx="50%"
+                    cy="45%"
+                    innerRadius={0}
+                    outerRadius={80}
+                    dataKey="value"
+                  >
+                    {pieData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={pieColors[index % pieColors.length]} />
+                    ))}
+                  </Pie>
+                  <RechartsTooltip 
+                    contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}
+                    formatter={(value) => [`$${(value/1e9).toFixed(2)}B`]}
+                  />
+                  <Legend verticalAlign="bottom" height={36} iconType="circle" wrapperStyle={{ fontSize: '12px', color: '#666' }} />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+          ) : (
+            <p style={{ color: 'var(--text-secondary)', margin: 'auto' }}>No data</p>
+          )}
+        </div>
+
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '2rem' }}>
@@ -74,6 +175,8 @@ export default function ReportViewer({ data }) {
             ) : (
               <p style={{ color: 'var(--text-secondary)' }}>Data unavailable or parsing failed.</p>
             )}
+
+            {/* Charts moved to the top panel */}
           </div>
 
           <div className="glass-panel">

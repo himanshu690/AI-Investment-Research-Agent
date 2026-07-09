@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { History, Loader2, ArrowRight } from 'lucide-react';
+import { History, Loader2, ArrowRight, Trash2 } from 'lucide-react';
 
 export default function SearchHistory({ onSelectHistory }) {
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [alertMessage, setAlertMessage] = useState(null);
 
   useEffect(() => {
     const fetchHistory = async () => {
@@ -23,6 +24,26 @@ export default function SearchHistory({ onSelectHistory }) {
 
     fetchHistory();
   }, []);
+
+  const handleDelete = async (e, id) => {
+    e.stopPropagation();
+
+    try {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const response = await fetch(`${API_URL}/api/history/${id}`, {
+        method: 'DELETE',
+      });
+      
+      if (!response.ok) throw new Error('Failed to delete history');
+      
+      setHistory(prev => prev.filter(record => record._id !== id));
+      setAlertMessage("The history record has been removed.");
+      setTimeout(() => setAlertMessage(null), 3000);
+    } catch (err) {
+      console.error(err);
+      alert(err.message);
+    }
+  };
 
   if (loading) {
     return (
@@ -52,6 +73,41 @@ export default function SearchHistory({ onSelectHistory }) {
 
   return (
     <div className="glass-panel animate-fade-in">
+      {alertMessage && (
+        <div className="alert alert-warning alert-dismissible fade show" role="alert" style={{
+          padding: '1rem 3rem 1rem 1rem',
+          marginBottom: '1.5rem',
+          border: '1px solid #ffecb5',
+          borderRadius: '0.375rem',
+          backgroundColor: '#fff3cd',
+          color: '#664d03',
+          position: 'relative'
+        }}>
+          <strong>Deleted!</strong> {alertMessage}
+          <button 
+            type="button" 
+            className="btn-close" 
+            onClick={() => setAlertMessage(null)} 
+            aria-label="Close"
+            style={{
+              position: 'absolute',
+              top: 0,
+              right: 0,
+              padding: '1.15rem 1rem',
+              background: 'transparent',
+              border: 'none',
+              fontSize: '1.5rem',
+              lineHeight: 1,
+              cursor: 'pointer',
+              color: '#000',
+              opacity: 0.5
+            }}
+          >
+            &times;
+          </button>
+        </div>
+      )}
+
       <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
         <History size={20} className="text-gradient" />
         Search History
@@ -91,12 +147,54 @@ export default function SearchHistory({ onSelectHistory }) {
               }}
             >
               <div>
-                <h4 style={{ fontSize: '1.1rem', marginBottom: '0.25rem', color: 'var(--text-primary)' }}>{record.companyName}</h4>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.25rem' }}>
+                  <h4 style={{ fontSize: '1.1rem', margin: 0, color: 'var(--text-primary)' }}>{record.companyName}</h4>
+                  {record.finalState?.finalDecision?.verdict && (
+                    <span style={{
+                      fontSize: '0.75rem',
+                      fontWeight: 600,
+                      padding: '2px 8px',
+                      borderRadius: '12px',
+                      textTransform: 'uppercase',
+                      background: record.finalState.finalDecision.verdict.toUpperCase() === 'INVEST' ? 'rgba(16, 185, 129, 0.1)' : 'rgba(244, 63, 94, 0.1)',
+                      color: record.finalState.finalDecision.verdict.toUpperCase() === 'INVEST' ? 'var(--success)' : 'var(--danger)',
+                      border: `1px solid ${record.finalState.finalDecision.verdict.toUpperCase() === 'INVEST' ? 'rgba(16, 185, 129, 0.2)' : 'rgba(244, 63, 94, 0.2)'}`
+                    }}>
+                      {record.finalState.finalDecision.verdict.toUpperCase() === 'INVEST' ? 'INVEST' : 'PASS'}
+                    </span>
+                  )}
+                </div>
                 <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
                   {new Date(record.timestamp).toLocaleString()}
                 </span>
               </div>
-              <ArrowRight size={20} color="var(--accent-primary)" />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <button 
+                  onClick={(e) => handleDelete(e, record._id)}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    padding: '8px',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'var(--danger)',
+                    transition: 'all 0.2s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(244, 63, 94, 0.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'none';
+                  }}
+                  title="Delete Record"
+                >
+                  <Trash2 size={20} />
+                </button>
+                <ArrowRight size={20} color="var(--accent-primary)" />
+              </div>
             </div>
           );
         })}
