@@ -1,0 +1,287 @@
+{
+  "timestamp": "2026-07-10T12:38:54.489Z",
+  "companyName": "Mahindra",
+  "financialData": {
+    "ticker": "MHRIL.NS",
+    "name": "Mahindra",
+    "sector": "Consumer Cyclical",
+    "industry": "Resorts & Casinos",
+    "summary": "Mahindra Holidays & Resorts India Limited operates in the leisure hospitality sector in India, Finland, Sweden, Spain, Dubai, Thailand, and Malaysia. It provides vacation ownership and other accommodation-related services. The company was incorporated in 1996 and is based in Mumbai, India. Mahindra Holidays & Resorts India Limited operates as a subsidiary of Mahindra & Mahindra Limited.",
+    "currentPrice": 233.72,
+    "revenueGrowth": 0.053,
+    "ebitdaMargins": 0.1322,
+    "debtToEquity": 488.662,
+    "returnOnEquity": 0.08972,
+    "trailingPE": 68.13994,
+    "forwardPE": 17.572931,
+    "marketCap": 47135899648,
+    "beta": -0.195,
+    "historicalData": [
+      {
+        "date": "2025-07",
+        "price": 357.20001220703125
+      },
+      {
+        "date": "2025-07",
+        "price": 361.29998779296875
+      },
+      {
+        "date": "2025-07",
+        "price": 359.6499938964844
+      },
+      {
+        "date": "2025-07",
+        "price": 355.79998779296875
+      },
+      {
+        "date": "2025-08",
+        "price": 351.6499938964844
+      },
+      {
+        "date": "2025-08",
+        "price": 355.54998779296875
+      },
+      {
+        "date": "2025-08",
+        "price": 362
+      },
+      {
+        "date": "2025-08",
+        "price": 349.8999938964844
+      },
+      {
+        "date": "2025-08",
+        "price": 358.04998779296875
+      },
+      {
+        "date": "2025-09",
+        "price": 357.20001220703125
+      },
+      {
+        "date": "2025-09",
+        "price": 358.25
+      },
+      {
+        "date": "2025-09",
+        "price": 342.1000061035156
+      },
+      {
+        "date": "2025-09",
+        "price": 352.6000061035156
+      },
+      {
+        "date": "2025-10",
+        "price": 344.04998779296875
+      },
+      {
+        "date": "2025-10",
+        "price": 331.5
+      },
+      {
+        "date": "2025-10",
+        "price": 333.04998779296875
+      },
+      {
+        "date": "2025-10",
+        "price": 328.6499938964844
+      },
+      {
+        "date": "2025-11",
+        "price": 318.75
+      },
+      {
+        "date": "2025-11",
+        "price": 313
+      },
+      {
+        "date": "2025-11",
+        "price": 330.3999938964844
+      },
+      {
+        "date": "2025-11",
+        "price": 317.45001220703125
+      },
+      {
+        "date": "2025-11",
+        "price": 312.95001220703125
+      },
+      {
+        "date": "2025-12",
+        "price": 314.25
+      },
+      {
+        "date": "2025-12",
+        "price": 309.1000061035156
+      },
+      {
+        "date": "2025-12",
+        "price": 308.3500061035156
+      },
+      {
+        "date": "2025-12",
+        "price": 308.04998779296875
+      },
+      {
+        "date": "2026-01",
+        "price": 304.75
+      },
+      {
+        "date": "2026-01",
+        "price": 301.75
+      },
+      {
+        "date": "2026-01",
+        "price": 289.5
+      },
+      {
+        "date": "2026-01",
+        "price": 292.25
+      },
+      {
+        "date": "2026-02",
+        "price": 293.70001220703125
+      },
+      {
+        "date": "2026-02",
+        "price": 293.70001220703125
+      },
+      {
+        "date": "2026-02",
+        "price": 285.3500061035156
+      },
+      {
+        "date": "2026-02",
+        "price": 284.20001220703125
+      },
+      {
+        "date": "2026-03",
+        "price": 274.25
+      },
+      {
+        "date": "2026-03",
+        "price": 264.1499938964844
+      },
+      {
+        "date": "2026-03",
+        "price": 256.75
+      },
+      {
+        "date": "2026-03",
+        "price": 238.60000610351562
+      },
+      {
+        "date": "2026-03",
+        "price": 246.75
+      },
+      {
+        "date": "2026-04",
+        "price": 255.5399932861328
+      },
+      {
+        "date": "2026-04",
+        "price": 272.8599853515625
+      },
+      {
+        "date": "2026-04",
+        "price": 258.7099914550781
+      },
+      {
+        "date": "2026-04",
+        "price": 247.0500030517578
+      },
+      {
+        "date": "2026-05",
+        "price": 239.4600067138672
+      },
+      {
+        "date": "2026-05",
+        "price": 234.4499969482422
+      },
+      {
+        "date": "2026-05",
+        "price": 218.8699951171875
+      },
+      {
+        "date": "2026-05",
+        "price": 218.42999267578125
+      },
+      {
+        "date": "2026-05",
+        "price": 215.52000427246094
+      },
+      {
+        "date": "2026-06",
+        "price": 235.47000122070312
+      },
+      {
+        "date": "2026-06",
+        "price": 235.00999450683594
+      },
+      {
+        "date": "2026-06",
+        "price": 240.05999755859375
+      },
+      {
+        "date": "2026-06",
+        "price": 236.55999755859375
+      },
+      {
+        "date": "2026-07",
+        "price": 231.72000122070312
+      },
+      {
+        "date": "2026-07",
+        "price": 233.72000122070312
+      }
+    ],
+    "quarterlyData": [
+      {
+        "quarter": "4Q2023",
+        "revenue": 3357098000,
+        "earnings": 680383000
+      },
+      {
+        "quarter": "3Q2024",
+        "revenue": 0,
+        "earnings": 0
+      },
+      {
+        "quarter": "4Q2024",
+        "revenue": 3599330000,
+        "earnings": 348384000
+      },
+      {
+        "quarter": "2Q2025",
+        "revenue": 0,
+        "earnings": 0
+      }
+    ]
+  },
+  "newsData": [
+    {
+      "title": "Mahindra & Mahindra Stock Slips Despite Strong SUV Sales and Robust Q1 Earnings - Forex News by FX Leaders",
+      "content": "3. Mahindra & Mahindra Stock Slips Despite Strong SUV S... # Mahindra & Mahindra Stock Slips Despite Strong SUV Sales and Robust Q1 Earnings. ## Mahindra & Mahindra (M&M) stock started the day on a weak track and is showing mixed to negative performance on Tuesday. * Mahindra & Mahindra (M&M) stock is experiencing a slight decline of 0.58% amid profit booking after a strong performance. * The company reported a 22% increase in consolidated revenue for Q1 2026, reaching ₹45,529 crore, driven by strong demand for SUVs and tractors. * M&M holds the number one position in the SUV market with a 27.3% revenue market share and a 45.2% share in the tractor market. Despite these small losses, the company has strong demand for SUVs, tractors and solid auto sales, which is evident from the fact that its overall auto sales jumped 37 percent in June 2026, while Quarter 1 consolidated revenue reached ₹45,529 crore, which is up 22 percent."
+    },
+    {
+      "title": "Mahindra & Mahindra Financial Stock - Sunday background on the NBFC’s role and risks",
+      "content": "3 weeks ago - On the liabilities side, Mahindra & Mahindra Financial draws funding from bank lines, bonds and market borrowings, along with deposits where permitted. The cost of funds is sensitive to policy rates and risk perception toward NBFCs in India’s credit markets. Capital adequacy and leverage are important lenses when assessing the company’s resilience. Profitability in recent years has been driven by net interest margins, fee income from ancillary products and the trajectory of credit costs as collection efficiency improves or softens."
+    },
+    {
+      "title": "Mahindra & Mahindra Ltd stock (INE101A01026): shares rebound despite weaker three?month performance",
+      "content": "1 month ago - Additional news and developments on the stock can be explored via the linked overview pages. ... Mahindra & Mahindra Ltd currently trades higher on the day but still reflects a negative three?month performance, illustrating how short?term sentiment can diverge from the company’s longer?term role in India’s auto and farm equipment industries, based on live pricing and return data from Economic Times as of 06/09/2026."
+    },
+    {
+      "title": "Mahindra & Mahindra News - Mahindra & Mahindra Announcement, Latest News on Mahindra & Mahindra - The Economic Times",
+      "content": "Business News›Markets›Stocks›Stock Price Quotes›Mahindra & Mahindra Share Price  › Mahindra & Mahindra Updates. Investors have a final chance today to buy shares in 33 companies, including Mahindra & Mahindra, Tech Mahindra, and Union Bank, to qualify for upcoming dividend payouts. Mahindra & Mahindra Ltdhas informed BSE that the meeting of the Board of Directors of the Company is scheduled on 30/07/2026 ,inter alia, to consider and approve Dear Sir/ Ma'am,Pursuant to the Listing Regulations, we inform you that the Meeting of the Board of Directors of the Company will be held on Thursday, 30th July 2026 to, inter alia, consider and approve the Unaudited Standalone and Consolidated Financial Results of the Company for the First Quarter ending 30th June 2026.In terms of the Code of Conduct for Prevention of Insider Trading in Securities of Mahindra & Mahindra Limited, the Trading Window will be closed from 1st July 2026 to 1st August 2026 (both days inclusive)."
+    },
+    {
+      "title": "M&M Share Price Today – Mahindra & Mahindra Stock Price, Live Charts",
+      "content": "Image 2: INDstocks by INDmoney. Image 3: Mahindra & Mahindra Ltd image. # Mahindra & Mahindra Ltd. as on July 1, 2026 at 4:01 pm IST. Mahindra & Mahindra reports 37% growth in June 2026 auto sales, with strong SUV, commercial vehicle, tractor sales, and exports doubling year-on-year. ## Mahindra & Mahindra Stock Performance. Day's High ₹3,088.00. ₹3,166.30     ₹3,130.00   Image 5: downward going graph1.34%. 52 Week's High ₹2,896.00. ### Mahindra & Mahindra share price movements today. Day's Low - High₹3,088.00 - ₹3,166.30. 52 Week Low - High₹2,896.00 - ₹3,839.90. ### Mahindra & Mahindra Historical Returns. ## Mahindra & Mahindra Fundamentals. ## Mahindra & Mahindra Stock Valuation. Mahindra & Mahindra in the last 5 year s. | Image 10: Mahindra & Mahindra Ltd image Mahindra & Mahindra Ltd | BUY | 3,81,614.13 | 58.74% | 0.82 | 14,073 | 1,59,210 |. ## Market expectation of Mahindra & Mahindra Stock."
+    }
+  ],
+  "analystReport": "**Comprehensive Analysis of Mahindra & Mahindra Limited**\n\n**Financial Health:**\n\n* The company's revenue growth is 5.3%, indicating a moderate increase in sales.\n* EBITDA margins are 13.22%, suggesting a decent profitability level.\n* The debt-to-equity ratio is 488.66, which is high and may indicate a significant reliance on debt financing.\n* Return on equity (ROE) is 8.97%, which is relatively low compared to industry peers.\n* The current price-to-earnings (P/E) ratio is 68.14, which is high and may indicate overvaluation.\n\n**Growth Prospects:**\n\n* The company has reported a 22% increase in consolidated revenue for Q1 2026, driven by strong demand for SUVs and tractors.\n* Mahindra & Mahindra holds the number one position in the SUV market with a 27.3% revenue market share and a 45.2% share in the tractor market.\n* The company's auto sales jumped 37% in June 2026, while exports doubled year-on-year.\n* The company's strong brand presence and diversified product portfolio are expected to drive growth in the future.\n\n**Potential Risks:**\n\n* The high debt-to-equity ratio may pose a risk to the company's financial stability, particularly if interest rates rise.\n* The company's reliance on debt financing may limit its ability to invest in new projects and technologies.\n* The automotive industry is highly competitive, and Mahindra & Mahindra faces intense competition from other players, which may impact its market share and profitability.\n* The company's exposure to regulatory risks, such as changes in government policies and regulations, may also impact its operations and profitability.\n\n**Recent News and Developments:**\n\n* The company has reported strong SUV sales and robust Q1 earnings, despite a slight decline in stock price.\n* The company's financial performance has been driven by net interest margins, fee income from ancillary products, and the trajectory of credit costs.\n* The company's stock has rebounded despite a weaker three-month performance, illustrating the divergence between short-term sentiment and long-term fundamentals.\n* The company's board of directors is scheduled to meet on July 30, 2026, to consider and approve the unaudited standalone and consolidated financial results for Q1 2026.\n\n**Conclusion:**\n\nMahindra & Mahindra Limited is a well-established company with a strong brand presence and diversified product portfolio. While the company's financial health is moderate, its growth prospects are promising, driven by strong demand for SUVs and tractors. However, the company faces potential risks, including a high debt-to-equity ratio, intense competition, and regulatory risks. Investors should carefully consider these factors before making any investment decisions.\n\n**Recommendation:**\n\nBased on the analysis, we recommend a \"HOLD\" rating for Mahindra & Mahindra Limited. While the company's growth prospects are promising, its high debt-to-equity ratio and potential risks warrant caution. Investors should monitor the company's financial performance and industry trends before making any investment decisions.",
+  "finalDecision": {
+    "verdict": "REJECT",
+    "thesis": "# Introduction\nMahindra & Mahindra Limited is a well-established company with a strong brand presence and diversified product portfolio. However, after careful analysis of the company's financial health, growth prospects, and potential risks, we have decided to reject the investment opportunity.\n# Financial Health\n* The company's debt-to-equity ratio is 488.66, which is high and may indicate a significant reliance on debt financing.\n* The return on equity (ROE) is 8.97%, which is relatively low compared to industry peers.\n* The current price-to-earnings (P/E) ratio is 68.14, which is high and may indicate overvaluation.\n# Growth Prospects\n* The company has reported a 22% increase in consolidated revenue for Q1 2026, driven by strong demand for SUVs and tractors.\n* Mahindra & Mahindra holds the number one position in the SUV market with a 27.3% revenue market share and a 45.2% share in the tractor market.\n# Potential Risks\n* The high debt-to-equity ratio may pose a risk to the company's financial stability, particularly if interest rates rise.\n* The company's reliance on debt financing may limit its ability to invest in new projects and technologies.\n* The automotive industry is highly competitive, and Mahindra & Mahindra faces intense competition from other players, which may impact its market share and profitability.\n# Conclusion\nWhile the company's growth prospects are promising, its high debt-to-equity ratio, low ROE, and high P/E ratio are significant concerns. Therefore, we have decided to reject the investment opportunity."
+  }
+}

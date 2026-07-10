@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
-import { Search, Loader2, History, Plus } from 'lucide-react';
+import React, { useState, useContext } from 'react';
+import { Search, Loader2, History, Plus, Star } from 'lucide-react';
 import Timeline from './Timeline';
 import ReportViewer from './ReportViewer';
 import SearchHistory from './SearchHistory';
+import Watchlist from './Watchlist';
+import { AuthContext } from '../context/AuthContext';
 
 export default function Dashboard() {
+  const { token, user } = useContext(AuthContext);
   const [companyName, setCompanyName] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
   const [currentStep, setCurrentStep] = useState(null);
@@ -20,7 +23,9 @@ export default function Dashboard() {
       setViewMode('new');
       
       const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-      const response = await fetch(`${API_URL}/api/history/${id}`);
+      const response = await fetch(`${API_URL}/api/history/${id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       if (!response.ok) throw new Error("Failed to load past report.");
       
       const data = await response.json();
@@ -48,7 +53,9 @@ export default function Dashboard() {
 
     try {
       const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-      const historyRes = await fetch(`${API_URL}/api/history`);
+      const historyRes = await fetch(`${API_URL}/api/history`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       if (historyRes.ok) {
         const historyData = await historyRes.json();
         const match = historyData.find(item => item.companyName.toLowerCase() === companyName.trim().toLowerCase());
@@ -64,7 +71,7 @@ export default function Dashboard() {
     setCurrentStep('INIT');
 
     const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-    const eventSource = new EventSource(`${API_URL}/api/research?companyName=${encodeURIComponent(companyName)}`);
+    const eventSource = new EventSource(`${API_URL}/api/research?companyName=${encodeURIComponent(companyName)}&token=${token}`);
 
     eventSource.onmessage = (event) => {
       const data = JSON.parse(event.data);
@@ -147,9 +154,10 @@ export default function Dashboard() {
       <div className="animate-fade-in stagger-2" style={{ display: 'flex', justifyContent: 'center', marginBottom: '3rem' }}>
         <div className="segmented-control">
           <div className="segment-active-bg" style={{ 
-            width: '50%', 
-            left: viewMode === 'new' ? '6px' : 'calc(50% - 6px)',
-            transform: viewMode === 'new' ? 'translateX(0)' : 'translateX(12px)'
+            width: '150px', 
+            left: '6px',
+            transform: viewMode === 'new' ? 'translateX(0)' : viewMode === 'history' ? 'translateX(150px)' : 'translateX(300px)',
+            transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
           }} />
           <button 
             className={`segment-btn ${viewMode === 'new' ? 'active' : ''}`}
@@ -165,6 +173,36 @@ export default function Dashboard() {
           >
             <History size={18} /> History
           </button>
+          <button 
+            className={`segment-btn ${viewMode === 'watchlist' ? 'active' : ''}`}
+            onClick={() => setViewMode('watchlist')}
+            style={{ width: '150px', justifyContent: 'center', position: 'relative' }}
+          >
+            <Star size={18} /> Watchlist
+            {user?.watchlist?.length > 0 && (
+              <span style={{
+                position: 'absolute',
+                top: '-8px',
+                right: '-8px',
+                background: '#ef4444',
+                color: 'white',
+                fontSize: '11px',
+                fontWeight: 'bold',
+                minWidth: '22px',
+                height: '22px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: '50%',
+                border: '2px solid white',
+                boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
+                lineHeight: 1,
+                zIndex: 10
+              }}>
+                {user.watchlist.length}
+              </span>
+            )}
+          </button>
         </div>
       </div>
 
@@ -179,6 +217,13 @@ export default function Dashboard() {
       
       {viewMode === 'history' && !isProcessing && (
         <SearchHistory onSelectHistory={loadHistoricReport} />
+      )}
+
+      {viewMode === 'watchlist' && !isProcessing && (
+        <Watchlist onSelectCompany={(name) => {
+          setCompanyName(name);
+          setViewMode('new');
+        }} />
       )}
 
       {reportData && !isProcessing && viewMode === 'new' && <ReportViewer data={reportData} />}

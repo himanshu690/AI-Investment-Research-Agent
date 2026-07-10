@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { History, Loader2, ArrowRight, Trash2 } from 'lucide-react';
+import { AuthContext } from '../context/AuthContext';
 
 export default function SearchHistory({ onSelectHistory }) {
+  const { token } = useContext(AuthContext);
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -11,7 +13,9 @@ export default function SearchHistory({ onSelectHistory }) {
     const fetchHistory = async () => {
       try {
         const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-        const response = await fetch(`${API_URL}/api/history`);
+        const response = await fetch(`${API_URL}/api/history`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
         if (!response.ok) throw new Error('Failed to fetch history');
         const data = await response.json();
         setHistory(data);
@@ -23,7 +27,7 @@ export default function SearchHistory({ onSelectHistory }) {
     };
 
     fetchHistory();
-  }, []);
+  }, [token]);
 
   const handleDelete = async (e, id) => {
     e.stopPropagation();
@@ -32,6 +36,7 @@ export default function SearchHistory({ onSelectHistory }) {
       const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
       const response = await fetch(`${API_URL}/api/history/${id}`, {
         method: 'DELETE',
+        headers: { Authorization: `Bearer ${token}` }
       });
       
       if (!response.ok) throw new Error('Failed to delete history');

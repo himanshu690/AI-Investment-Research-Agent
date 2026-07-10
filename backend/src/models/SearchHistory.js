@@ -1,6 +1,11 @@
 import mongoose from 'mongoose';
 
 const SearchHistorySchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
   companyName: {
     type: String,
     required: true,

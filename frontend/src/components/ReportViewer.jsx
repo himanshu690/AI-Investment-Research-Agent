@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { CheckCircle, XCircle } from 'lucide-react';
+import { CheckCircle, XCircle, Star, Loader2 } from 'lucide-react';
 import { AreaChart, Area, LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, Legend, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer } from 'recharts';
+import { AuthContext } from '../context/AuthContext';
 
 export default function ReportViewer({ data }) {
   if (!data || !data.finalDecision) return null;
@@ -25,6 +26,42 @@ export default function ReportViewer({ data }) {
   ] : [];
   const pieColors = ['#0ea5e9', '#4ade80']; // Match image style a bit better
 
+  const { token, updateWatchlist } = useContext(AuthContext);
+  const [isAdding, setIsAdding] = useState(false);
+  const [added, setAdded] = useState(false);
+
+  const handleAddToWatchlist = async () => {
+    setIsAdding(true);
+    try {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const response = await fetch(`${API_URL}/api/watchlist/add`, {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}` 
+        },
+        body: JSON.stringify({ companyName: data.companyName })
+      });
+      
+      if (response.ok) {
+        const updatedWatchlist = await response.json();
+        updateWatchlist(updatedWatchlist);
+        setAdded(true);
+      } else {
+        const err = await response.json();
+        if (err.error === 'Company already in watchlist') {
+          setAdded(true);
+        } else {
+          alert('Failed to add: ' + err.error);
+        }
+      }
+    } catch (err) {
+      alert('Error adding to watchlist');
+    } finally {
+      setIsAdding(false);
+    }
+  };
+
   return (
     <div className="animate-fade-in" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2rem' }}>
       
@@ -45,11 +82,36 @@ export default function ReportViewer({ data }) {
         <div style={{ position: 'absolute', width: '150px', height: '150px', background: isSuccess ? 'var(--success)' : 'var(--danger)', filter: 'blur(80px)', opacity: 0.2 }} />
         
         {isSuccess ? <CheckCircle size={64} color="var(--success)" style={{ zIndex: 1 }} /> : <XCircle size={64} color="var(--danger)" style={{ zIndex: 1 }} />}
-        <div style={{ zIndex: 1 }}>
+        <div style={{ zIndex: 1, flexGrow: 1 }}>
           <h2 style={{ fontSize: '3rem', margin: '0 0 0.5rem 0', color: isSuccess ? 'var(--success)' : 'var(--danger)', textShadow: isSuccess ? '0 0 20px var(--success-glow)' : '0 0 20px var(--danger-glow)' }}>
             {displayVerdict}
           </h2>
           <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '1.2rem' }}>Final Committee Decision for <strong style={{ color: 'var(--text-primary)' }}>{data.companyName}</strong></p>
+        </div>
+        
+        <div style={{ zIndex: 1 }}>
+          <button 
+            onClick={handleAddToWatchlist}
+            disabled={isAdding || added}
+            style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '0.5rem', 
+              padding: '12px 24px', 
+              borderRadius: '12px', 
+              border: 'none', 
+              background: added ? 'rgba(0,0,0,0.05)' : 'var(--accent-primary)',
+              color: added ? 'var(--text-secondary)' : '#fff',
+              cursor: added ? 'default' : 'pointer',
+              fontWeight: 600,
+              fontSize: '1rem',
+              transition: 'all 0.2s ease',
+              boxShadow: added ? 'none' : '0 4px 15px rgba(255, 20, 147, 0.3)'
+            }}
+          >
+            {isAdding ? <Loader2 className="animate-spin" size={18} /> : <Star size={18} fill={added ? "currentColor" : "none"} />}
+            {added ? 'In Watchlist' : 'Add to Watchlist'}
+          </button>
         </div>
       </div>
 

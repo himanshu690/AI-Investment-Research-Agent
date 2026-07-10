@@ -3,6 +3,10 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './src/config/db.js';
 import SearchHistory from './src/models/SearchHistory.js';
+import authRoutes from './src/routes/auth.js';
+import watchlistRoutes from './src/routes/watchlist.js';
+import { protect } from './src/middleware/auth.js';
+import jwt from 'jsonwebtoken';
 
 // Load environmental keys
 dotenv.config();
@@ -27,6 +31,10 @@ app.use(
 
 app.use(express.json());
 
+// Mount routes
+app.use('/api/auth', authRoutes);
+app.use('/api/watchlist', watchlistRoutes);
+
 // Base checking route to verify server performance
 app.get('/api/health', (req, res) => {
   res.json({ status: "healthy loda", timestamp: new Date() });
@@ -34,10 +42,21 @@ app.get('/api/health', (req, res) => {
 
 // Main execution route for the Investment research agent using SSE
 app.get('/api/research', async (req, res) => {
-  const { companyName } = req.query;
+  const { companyName, token } = req.query;
   
   if (!companyName) {
     return res.status(400).json({ error: "Company name parameter is mandatory." });
+  }
+
+  if (!token) {
+    return res.status(401).json({ error: "Not authorized, no token" });
+  }
+
+  let decoded;
+  try {
+    decoded = jwt.verify(token, process.env.JWT_SECRET || 'secret123');
+  } catch (error) {
+    return res.status(401).json({ error: "Not authorized, token failed" });
   }
 
   // Setup SSE Headers
@@ -85,7 +104,7 @@ app.get('/api/research', async (req, res) => {
     } else {
       // Save to database
       try {
-        await SearchHistory.create({ companyName, finalState });
+        await SearchHistory.create({ userId: decoded.id, companyName, finalState });
       } catch (dbError) {
         console.error("Failed to save search history:", dbError);
       }
@@ -103,9 +122,9 @@ app.get('/api/research', async (req, res) => {
 });
 
 // Fetch search history (summary)
-app.get('/api/history', async (req, res) => {
+app.get('/api/history', protect, async (req, res) => {
   try {
-    const history = await SearchHistory.find().sort({ timestamp: -1 }).select('companyName timestamp finalState.finalDecision.verdict');
+    const history = await SearchHistory.find({ userId: req.user._id }).sort({ timestamp: -1 }).select('companyName timestamp finalState.finalDecision.verdict');
     res.json(history);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch history" });
@@ -113,9 +132,9 @@ app.get('/api/history', async (req, res) => {
 });
 
 // Fetch a specific historic search result
-app.get('/api/history/:id', async (req, res) => {
+app.get('/api/history/:id', protect, async (req, res) => {
   try {
-    const record = await SearchHistory.findById(req.params.id);
+    const record = await SearchHistory.findOne({ _id: req.params.id, userId: req.user._id });
     if (!record) return res.status(404).json({ error: "Record not found" });
     res.json(record);
   } catch (error) {
@@ -124,9 +143,9 @@ app.get('/api/history/:id', async (req, res) => {
 });
 
 // Delete a specific historic search result
-app.delete('/api/history/:id', async (req, res) => {
+app.delete('/api/history/:id', protect, async (req, res) => {
   try {
-    const record = await SearchHistory.findByIdAndDelete(req.params.id);
+    const record = await SearchHistory.findOneAndDelete({ _id: req.params.id, userId: req.user._id });
     if (!record) return res.status(404).json({ error: "Record not found" });
     res.json({ message: "Record deleted successfully" });
   } catch (error) {
