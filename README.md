@@ -42,7 +42,7 @@ to help users make informed investment decisions.
 ## 📋 Prerequisites
 
 - ✅ Node.js (v16+)
-- ✅ MongoDB Atlas account (or local MongoDB)
+- ✅ PostgreSQL Database (e.g., Neon or Supabase)
 - ✅ Tavily API Key (for web search/agent integration)
 - ✅ OpenAI API Key (for the LLM)
 
@@ -114,9 +114,7 @@ http://localhost:5173
 
 ```env
 PORT=5000
-
-MONGODB_URI=your_mongodb_atlas_connection_string
-
+DATABASE_URL="postgresql://user:password@host:5432/dbname?sslmode=require"
 JWT_SECRET=your_jwt_secret
 
 OPENAI_API_KEY=your_openai_api_key
@@ -143,7 +141,7 @@ The application is structured into a modern full-stack architecture:
 - 🔐 JWT Authentication
 - 👤 User Profiles
 - 📝 Search History
-- 🍃 MongoDB Atlas integration
+- 🐘 PostgreSQL & Prisma ORM integration
 
 ---
 
@@ -156,7 +154,7 @@ The application is structured into a modern full-stack architecture:
 
 ---
 
-### 🗄️ Database (MongoDB Atlas)
+### 🗄️ Database (PostgreSQL via Prisma)
 
 Stores:
 
@@ -197,7 +195,7 @@ A vibrant light theme with subtle 3D elements creates a premium, engaging experi
 
 ### 🗄️ Trade-off — Data Storage
 
-Search history is currently stored as a monolithic document per search. As the application scales, this can be improved with normalization or a time-series approach.
+Search history stores the agent's final state as a JSON column in Postgres. While this maintains flexibility akin to NoSQL, as the application scales, we may need to normalize this data into structured relational tables for advanced analytics.
 
 ---
 

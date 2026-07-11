@@ -1,6 +1,6 @@
 import express from 'express';
 import { protect } from '../middleware/auth.js';
-import User from '../models/User.js';
+import { prisma } from '../config/db.js';
 
 const router = express.Router();
 
@@ -9,7 +9,9 @@ const router = express.Router();
 // @access  Private
 router.get('/', protect, async (req, res) => {
   try {
-    const user = await User.findById(req.user._id);
+    const user = await prisma.user.findUnique({
+      where: { id: req.user.id }
+    });
     res.status(200).json(user.watchlist || []);
   } catch (error) {
     console.error('Watchlist fetch error:', error);
@@ -27,14 +29,14 @@ router.post('/add', protect, async (req, res) => {
       return res.status(400).json({ error: 'Please provide a company name' });
     }
 
-    const user = await User.findById(req.user._id);
+    const user = await prisma.user.findUnique({
+      where: { id: req.user.id }
+    });
     
-    if (!user.watchlist) {
-      user.watchlist = [];
-    }
+    let watchlist = user.watchlist || [];
 
     // Check if already in watchlist (case-insensitive)
-    const exists = user.watchlist.some(
+    const exists = watchlist.some(
       (c) => c.toLowerCase() === companyName.toLowerCase()
     );
 
@@ -42,10 +44,14 @@ router.post('/add', protect, async (req, res) => {
       return res.status(400).json({ error: 'Company already in watchlist' });
     }
 
-    user.watchlist.push(companyName);
-    await user.save();
+    watchlist.push(companyName);
+    
+    await prisma.user.update({
+      where: { id: req.user.id },
+      data: { watchlist }
+    });
 
-    res.status(200).json(user.watchlist);
+    res.status(200).json(watchlist);
   } catch (error) {
     console.error('Watchlist add error:', error);
     res.status(500).json({ error: 'Server error adding to watchlist', details: error.message });
@@ -62,19 +68,22 @@ router.post('/remove', protect, async (req, res) => {
       return res.status(400).json({ error: 'Please provide a company name' });
     }
 
-    const user = await User.findById(req.user._id);
+    const user = await prisma.user.findUnique({
+      where: { id: req.user.id }
+    });
     
-    if (!user.watchlist) {
-      user.watchlist = [];
-    }
+    let watchlist = user.watchlist || [];
 
-    user.watchlist = user.watchlist.filter(
+    watchlist = watchlist.filter(
       (c) => c.toLowerCase() !== companyName.toLowerCase()
     );
 
-    await user.save();
+    await prisma.user.update({
+      where: { id: req.user.id },
+      data: { watchlist }
+    });
 
-    res.status(200).json(user.watchlist);
+    res.status(200).json(watchlist);
   } catch (error) {
     console.error('Watchlist remove error:', error);
     res.status(500).json({ error: 'Server error removing from watchlist', details: error.message });

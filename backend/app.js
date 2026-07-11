@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './src/config/db.js';
-import SearchHistory from './src/models/SearchHistory.js';
+import { prisma } from './src/config/db.js';
 import authRoutes from './src/routes/auth.js';
 import watchlistRoutes from './src/routes/watchlist.js';
 import { protect } from './src/middleware/auth.js';
@@ -104,7 +104,9 @@ app.get('/api/research', async (req, res) => {
     } else {
       // Save to database
       try {
-        await SearchHistory.create({ userId: decoded.id, companyName, finalState });
+        await prisma.searchHistory.create({
+          data: { userId: decoded.id, companyName, finalState }
+        });
       } catch (dbError) {
         console.error("Failed to save search history:", dbError);
       }
@@ -124,9 +126,25 @@ app.get('/api/research', async (req, res) => {
 // Fetch search history (summary)
 app.get('/api/history', protect, async (req, res) => {
   try {
-    const history = await SearchHistory.find({ userId: req.user._id }).sort({ timestamp: -1 }).select('companyName timestamp finalState.finalDecision.verdict');
-    res.json(history);
+    const history = await prisma.searchHistory.findMany({
+      where: { userId: req.user.id },
+      orderBy: { timestamp: 'desc' },
+      select: { id: true, companyName: true, timestamp: true, finalState: true }
+    });
+    // Map to extract only the verdict if necessary, as Prisma returns the whole JSON
+    const mapped = history.map(h => ({
+      _id: h.id,
+      companyName: h.companyName,
+      timestamp: h.timestamp,
+      finalState: {
+        finalDecision: {
+          verdict: h.finalState?.finalDecision?.verdict
+        }
+      }
+    }));
+    res.json(mapped);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: "Failed to fetch history" });
   }
 });
@@ -134,10 +152,14 @@ app.get('/api/history', protect, async (req, res) => {
 // Fetch a specific historic search result
 app.get('/api/history/:id', protect, async (req, res) => {
   try {
-    const record = await SearchHistory.findOne({ _id: req.params.id, userId: req.user._id });
+    const record = await prisma.searchHistory.findFirst({
+      where: { id: req.params.id, userId: req.user.id }
+    });
     if (!record) return res.status(404).json({ error: "Record not found" });
-    res.json(record);
+    // Normalize _id for frontend expectations
+    res.json({ ...record, _id: record.id });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: "Failed to fetch record" });
   }
 });
@@ -145,10 +167,15 @@ app.get('/api/history/:id', protect, async (req, res) => {
 // Delete a specific historic search result
 app.delete('/api/history/:id', protect, async (req, res) => {
   try {
-    const record = await SearchHistory.findOneAndDelete({ _id: req.params.id, userId: req.user._id });
+    const record = await prisma.searchHistory.findFirst({
+      where: { id: req.params.id, userId: req.user.id }
+    });
     if (!record) return res.status(404).json({ error: "Record not found" });
+    
+    await prisma.searchHistory.delete({ where: { id: req.params.id } });
     res.json({ message: "Record deleted successfully" });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: "Failed to delete record" });
   }
 });
